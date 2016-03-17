@@ -1,0 +1,7 @@
+*.o
+*.dmg
+*.swp
+.DS_Store
+*.plist
+Testing/cocos2d/build/
+Testing/proj.ios_mac/Testing.xcodeproj/
