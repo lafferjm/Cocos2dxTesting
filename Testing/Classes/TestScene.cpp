@@ -30,11 +30,6 @@ bool TestScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    Sprite *crossSprite = Sprite::create("Cross.png");
-    crossSprite->setPosition(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y);
-    
-    this->addChild(crossSprite);
     
     EventListenerTouchOneByOne *touchListener = EventListenerTouchOneByOne::create();
     touchListener->setSwallowTouches(true);
