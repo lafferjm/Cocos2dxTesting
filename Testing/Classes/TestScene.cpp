@@ -1,4 +1,5 @@
 #include "TestScene.h"
+#include "Cross.h"
 
 using namespace cocos2d;
 
@@ -35,6 +36,22 @@ bool TestScene::init()
     
     this->addChild(crossSprite);
     
+    EventListenerTouchOneByOne *touchListener = EventListenerTouchOneByOne::create();
+    touchListener->setSwallowTouches(true);
+    touchListener->onTouchBegan = CC_CALLBACK_2(TestScene::onTouchBegan, this);
+    
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
+    
     return true;
     
+}
+
+bool TestScene::onTouchBegan(Touch* touch, Event* event)
+{
+    
+    Vec2 touchPosition = touch->getLocation();
+    
+    Cross *cross = new Cross(touchPosition.x, touchPosition.y, this);
+    
+    return true;
 }
