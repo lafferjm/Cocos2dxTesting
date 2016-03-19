@@ -1,5 +1,4 @@
 #include "TestScene.h"
-#include "Cross.h"
 
 using namespace cocos2d;
 
@@ -46,7 +45,20 @@ bool TestScene::onTouchBegan(Touch* touch, Event* event)
     
     Vec2 touchPosition = touch->getLocation();
     
-    Cross *cross = new Cross(touchPosition.x, touchPosition.y, this);
+    Sprite *crossSprite = Sprite::create("Cross.png");
+    crossSprite->setPosition(touchPosition.x, touchPosition.y);
+    
+    float rotateAmount = 360.0;
+    
+    if(RandomHelper::random_int(1, 2) == 2)
+    {
+        rotateAmount = -360.0;
+    }
+    
+    RotateBy *rotateAction = RotateBy::create(2.0, rotateAmount);
+    crossSprite->runAction(RepeatForever::create(rotateAction));
+    
+    this->addChild(crossSprite);
     
     return true;
 }
